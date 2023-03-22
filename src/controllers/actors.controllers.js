@@ -23,7 +23,7 @@ const remove = catchError(async(req, res) => {
     const { id } = req.params;
     const result = await Actors.destroy({ where: {id} });
     if (result === 0) return res.status(404).json({message: "Actor not found"})
-    return res.status(204);
+    return res.sendStatus(204);
 });
 
 const update = catchError(async(req, res) => {
