@@ -29,6 +29,12 @@ test("GET /directors should return all the director", async()=>{
     // expect(res.body[0].?).toBeDefined();
 });
 
+test("GET /directors/:id should return one director", async() => {
+    const res = await request(app).get(`/directors/${directorId}`);
+    expect(res.status).toBe(200);
+    expect(res.body.firstName).toBe("George")
+});
+
 test("PUT /directors/:id should update one director", async()=>{
     const body = {
         firstName: "George",

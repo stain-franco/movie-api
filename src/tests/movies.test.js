@@ -3,7 +3,6 @@ const app = require('../app');
 const Actors = require('../models/Actors');
 const Directors = require('../models/Directors');
 const Genres = require('../models/Genres');
-const Movies = require('../models/Movies');
 require("../models");
 
 
@@ -29,6 +28,12 @@ test("GET /movies should return all the movie", async()=>{
     expect(res.status).toBe(200);
     expect(res.body).toHaveLength(1);
     // expect(res.body[0].?).toBeDefined();
+});
+
+test("GET /movies/:id should return one movie", async() => {
+    const res = await request(app).get(`/movies/${movieId}`);
+    expect(res.status).toBe(200);
+    expect(res.body.name).toBe("Star Wars")
 });
 
 test("PUT /movies/:id should update one movie", async()=>{

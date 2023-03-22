@@ -25,6 +25,12 @@ test("GET /genres should return all the genre", async()=>{
     // expect(res.body[0].?).toBeDefined();
 });
 
+test("GET /genres/:id should return one genre", async() => {
+    const res = await request(app).get(`/genres/${genresId}`);
+    expect(res.status).toBe(200);
+    expect(res.body.name).toBe("Adventure")
+});
+
 test("PUT /genres/:id should update one genre", async()=>{
     const body = {
         name: "Adventure"

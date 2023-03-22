@@ -29,6 +29,12 @@ test("GET /actors should return all the actor", async()=>{
     // expect(res.body[0].?).toBeDefined();
 });
 
+test("GET /actors/:id should return one actors", async() => {
+    const res = await request(app).get(`/actors/${actorId}`);
+    expect(res.status).toBe(200);
+    expect(res.body.firstName).toBe("ToMark")
+});
+
 test("PUT /actors/:id should update one actor", async()=>{
     const body = {
         firstName: "ToMark",
